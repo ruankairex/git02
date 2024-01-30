@@ -106,7 +106,7 @@
     } else {
     %>
         <tr>
-            <td colspan="8">没有可用的促销活动。</td>
+            <td colspan="8">沒有活動。</td>
         </tr>
     <%
     }
