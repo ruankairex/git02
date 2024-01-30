@@ -86,7 +86,7 @@ public class HRSystemLogin extends HttpServlet{
 				    
 				    System.out.println("--------------------------");
 				    hsession.setAttribute("UsersystemPass", userPass);//傳空的物件
-					response.sendRedirect(request.getContextPath() + "/UserSystemMainPage.do");	
+					response.sendRedirect(request.getContextPath() + "/UserSystemMainPage.jsp");	
 				}
 				
 			}else {
