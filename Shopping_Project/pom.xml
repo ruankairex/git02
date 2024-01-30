@@ -36,12 +36,6 @@
 	    <version>8.2.0</version>
 	</dependency>
 
-
-	<dependency>
-		<groupId>HibernateProject</groupId>
-		<artifactId>HibernateProject</artifactId>
-		<version>0.0.1-SNAPSHOT</version>
-	</dependency>
   </dependencies>
   
   <build>
