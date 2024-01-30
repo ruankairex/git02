@@ -10,21 +10,6 @@
 <title>網站首頁</title>
 </head>
 <body>
-<%
-	ProductDaoImpl dao = new ProductDaoImpl();
- 	List<Product> product = dao.selectAll();
- 	if (product != null && !product.isEmpty()) {
-		for (Product pro : product) {
-%>
 
-		<%=pro.getProductId()%>
-		<%=pro.getProductName()%>
-		<%=pro.getSellerId()%>
-		<%=pro.getEmployeeId()%>
-		
-<%
-		}
-	}
-%>
 </body>
 </html>
