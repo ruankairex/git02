@@ -85,15 +85,14 @@ public class HRSystemLogin extends HttpServlet{
 				    
 				    
 				    System.out.println("--------------------------");
+				    hsession.setAttribute("UsersystemPass", userPass);//傳空的物件
 					response.sendRedirect(request.getContextPath() + "/UserSystemMainPage.do");	
 				}
 				
+			}else {
+				out.write("登入失敗");
+				out.write("<a href='HRSystemLoginPage.html'>Go to Homepage</a> <hr>");				
 			}
-			
-			hsession.setAttribute("UsersystemPass", userPass);//傳空的物件
-//			out.write("<a href='http://localhost:8080/HumanResouces/HRSystemLoginPage.html'>Go to Homepage</a> <hr>");
-			
-			
 		} else {
 			System.out.println("認證成功，將打包資訊當通行證："); // 可以再修
 			for (Employee emp : rs) {

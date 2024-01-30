@@ -6,78 +6,22 @@
 <%@ page import="com.entity.*"%>
 
 <!-- 引用函式庫 核心函式庫 c -->
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>	
+	
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>人事系統主畫面</title>
-<link
-	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
-	rel="stylesheet"
-	integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+<title>部門員工權限管理表單</title>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
 	crossorigin="anonymous">
+
 </head>
-<style type="text/css">
-body {
-	background-image: url('images/888.jpg');
-	/* 設定背景圖片的URL */
-	background-size: cover;
-	/* 調整背景圖片大小以覆蓋整個頁面 */
-	background-position: 80%;
-	/* 將背景圖片置中 */
-	background-repeat: no-repeat;
-	/* 避免背景圖片重複 */
-	height: 100vh;
-	/* 使body元素充滿整個視窗高度 */
-	margin: 0;
-}
-
-h2 {
-	text-align: center;
-	/* 將文字置中 */
-	padding-top: 30px;
-	font-family: '標楷體', sans-serif;
-}
-
-hr {
-	border: 3px solid #FF9224;
-}
-
-table {
-	display: flex;
-	justify-content: center;
-}
-
-td {
-	padding: 1rem;
-	background-color: #C9EBB6;
-}
-
-tr:nth-child(1) {
-	background-color: #63EB6C;
-}
-</style>
 <body>
 
-
-	<h2>xx公司 人事管理系統</h2>
-	<hr>
-
-	<div>
-		<c:set var="hrSystemPass" value="${sessionScope.HRsystemPass}" />
-		<c:out
-			value="${hrSystemPass.employeeId} ${hrSystemPass.department} ${hrSystemPass.title} ${hrSystemPass.firstName} 您好!" />
-	</div>
-	<div>
-		<a href="LogOutServlet.do" class="btn btn-primary btn-sm mb-3">
-			LogOut </a>
-	</div>
-	<c:set var="deptAllow" value="人事部" />
-	<c:set var="titleAllow" value="主管" />
-
-	<div>
+<div>
 
 		<!-- <h3>${hrSystemPass.employeeId}&nbsp;${title}</h3>也可以這樣寫 -->
 		<hr>
@@ -152,5 +96,6 @@ tr:nth-child(1) {
 			}
 			%>
 		</table>
+	
 </body>
 </html>
