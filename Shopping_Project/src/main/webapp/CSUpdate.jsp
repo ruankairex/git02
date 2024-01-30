@@ -1,12 +1,17 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
+<!-- 引用函式庫 核心函式庫 c -->
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <html>
 <head>
     <title>客服部後臺管理</title>
 </head>
 <body>
+
+		<c:set var="hrSystemPass" value="${sessionScope.HRsystemPass}" />
+
+			
         <form action="S2Update.do" method="post" >
-	      <label for="userId" class="t1">用戶編號 : </label>
+	      <label for="userId" class="t1">用戶編號 : </label> 
 	      <input type="text" value="${param.userId}" name="userId" autocomplete="off" required readonly/>
 	      <br>
 	      <hr>
@@ -39,11 +44,27 @@
 	      <br>
 	      <hr>
       	  <label for="userStatus" class="t1">用戶狀態 : </label>
-                <select name="userStatus">
+      	  
+      	  <c:choose>
+			<c:when test="${hrSystemPass.title.equals('員工')}">
+				<select name="userStatus">
                         <option value="未審核">未審核</option>
                         <option value="未通過">未通過</option>
                         <option value="審核中">已審核</option>
                 </select>
+			</c:when>
+		</c:choose>
+         <c:choose>
+			<c:when test="${hrSystemPass.title.equals('主管')}">
+				<select name="userStatus">
+                        <option value="未審核">再審核</option>
+                        <option value="未通過">未通過</option>
+                        <option value="已審核">已審核</option>
+                </select>
+			</c:when>
+		</c:choose>        
+                
+                 
           <br>
 	      <hr>
           <button type="submit">Update</button>

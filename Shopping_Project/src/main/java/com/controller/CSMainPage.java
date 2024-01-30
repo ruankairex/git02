@@ -22,8 +22,8 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
-@WebServlet(name = "ServUserUpdate", urlPatterns = { "/UserUpdate.do" })
-public class CSIndex extends HttpServlet {
+@WebServlet(name = "ServUserUpdate", urlPatterns = { "/CSMainPage.do" })
+public class CSMainPage extends HttpServlet {
 	private static final long serialVersionUID = 1L;
       
 	

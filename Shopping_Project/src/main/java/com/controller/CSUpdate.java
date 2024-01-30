@@ -7,6 +7,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
 import com.entity.User;
+import com.entity.empPass;
 import com.service.UserBeanService;
 import com.util.HibernateUtil;
 
@@ -15,6 +16,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 @WebServlet(name = "UpdateUserServlet", urlPatterns = { "/S2Update.do" })
 public class CSUpdate extends HttpServlet {
@@ -36,8 +38,20 @@ public class CSUpdate extends HttpServlet {
 		SessionFactory factry = HibernateUtil.getSessionFactory();
 		Session session = factry.getCurrentSession();
 		
+		
+		HttpSession hsession = request.getSession();
+		empPass pass = (empPass) hsession.getAttribute("HRsystemPass");
+		
+		// 拿到登入者的title
+		
+		String dept = pass.getDepartment();
+		String title = pass.getTitle();
+		
+		request.setAttribute("dept", dept);
+		hsession.setAttribute("title", title);
+		
+		
 		UserBeanService uService = new UserBeanService(session);
-
         
 		int userId = Integer.parseInt(request.getParameter("userId"));
         Integer buyerViolationCount = Integer.parseInt(request.getParameter("buyerViolationCount"));
@@ -45,12 +59,8 @@ public class CSUpdate extends HttpServlet {
 		Integer sellerQualified = Integer.parseInt(request.getParameter("userSellerQualified"));
         String userStatus = request.getParameter("userStatus");
         
-       System.out.println("S2" + userStatus);
-
-       
        
         User u = uService.selectById(userId);
-        System.out.println(u.getFirstName());
 
 //            UserBean user = new UserBean();
 //
@@ -67,7 +77,7 @@ public class CSUpdate extends HttpServlet {
     				u.getSellerDate(), sellerViolationCount, userStatus);
 
             if (updatedUser != null) {
-                response.sendRedirect("UserUpdate.do");
+                response.sendRedirect("CSMainPage.do");
             } else {
                 out.println("updatedUser == null");
             }
