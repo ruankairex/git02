@@ -76,9 +76,16 @@ public class ProcessPromotionServlet extends HttpServlet {
 		Session session = factory.getCurrentSession();
         PromotionDao thePromotionDao = new PromotionDaoImpl(session);
         
+        if(promotionId =="") {
+        	System.out.println("插入中...");
+        	thePromotionDao.insertPromotion(thePormotion);
+        }else {
+        	System.out.println("更新中...");
+        	thePormotion.setPromotionId(Integer.parseInt(promotionId));
+        	thePromotionDao.updatePromotion(thePormotion);
+        }
         
-        
-		
+        response.sendRedirect(request.getContextPath() + "/PromotionFindAllServlet");
 	}
 
 	

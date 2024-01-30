@@ -46,5 +46,11 @@ public class PromotionDaoImpl implements PromotionDao{
        
 	}
 
+	@Override
+	public Promotion updatePromotion(Promotion thePromotion) {
+		session.merge(thePromotion);
+		return thePromotion;
+	}
+
 }
 

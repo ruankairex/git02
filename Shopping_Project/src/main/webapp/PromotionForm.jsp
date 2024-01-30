@@ -11,8 +11,8 @@
 
 <form action="ProcessPromotionServlet" method="post">
 
-    <label for="promotionId">Promotion ID:</label>
-    <input type="text" id="promotionId" name="promotionId" value="${promotion.promotionId}" readonly><br>
+    
+    <input type="hidden" id="promotionId" name="promotionId" value="${promotion.promotionId}" readonly><br>
 
     <label for="promotionName">Promotion Name:</label>
     <input type="text" id="promotionName" name="promotionName" value="${promotion.promotionName}" required><br>

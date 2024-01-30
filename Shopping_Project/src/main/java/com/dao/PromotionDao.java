@@ -8,5 +8,6 @@ public interface PromotionDao {
 	public Promotion insertPromotion(Promotion thePromotion);
 	public Promotion findPromotionById(int theId);
 	public List<Promotion> findAll();
+	public Promotion updatePromotion(Promotion thePromotion);
 
 }
