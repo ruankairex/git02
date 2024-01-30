@@ -73,11 +73,11 @@
         <td>Action</td>
     </tr>
     <%
-    // 从 request 中获取 promotions 属性（注意拼写）
+  
     List<Promotion> promotions = (List<Promotion>) request.getAttribute("promotions");
 
     if (promotions != null && !promotions.isEmpty()) {
-        // 遍历 promotions 列表并显示
+
         for (Promotion promotion : promotions) {
 %>
         <tr>
@@ -98,11 +98,13 @@
    					class="btn btn-info btn-sm">
     				活動商品
 				</a>
-                <a href="DeletePromotionServlet?id=<%= promotion.getPromotionId() %>"
-                   class="btn btn-danger btn-sm"
-                   onclick="if (!(confirm('確定要刪除嗎？'))) return false">
-                    删除
-                </a>
+                <c:if test="${sessionScope.HRsystemPass.title == '主管'}">
+    				<a href="DeletePromotionServlet?id=<%= promotion.getPromotionId() %>"
+       				class="btn btn-danger btn-sm"
+       				onclick="if (!(confirm('確定要刪除嗎？'))) return false">
+        			删除
+    				</a>
+				</c:if>
             </td>
         </tr>
     <%
