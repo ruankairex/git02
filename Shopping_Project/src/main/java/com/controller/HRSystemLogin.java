@@ -68,6 +68,7 @@ public class HRSystemLogin extends HttpServlet{
 			Query<User> userQuery = session.createQuery(hqlUser, User.class);
 			userQuery.setParameter("userEmail", usermail);
 			userQuery.setParameter("userPassword", password);
+			// 這個List只有一個東西
 			List<User> user = userQuery.getResultList();
 			UserPass userPass = new UserPass();
 			if(!user.isEmpty()) {
