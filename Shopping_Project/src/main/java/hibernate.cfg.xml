@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+		"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+		"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+	<session-factory>
+
+		<property name="hibernate.connection.datasource">java:comp/env/JdbcMySQLConn/ResourcesSystem</property>
+		
+		
+		
+		<property name="hibernate.current_session_context_class">thread</property>
+		<property name="hibernate.show_sql">true</property>
+		<property name="hibernate.format_sql">true</property>
+		
+		
+		<mapping class="com.entity.User" />
+		<mapping class="com.entity.Employee" />
+		<mapping class="com.entity.Promotion" />
+		<mapping class="com.entity.Product" />
+		<mapping class="com.entity.Coupon" />
+		<mapping class="com.entity.CouponUserMap" />
+		<mapping class="com.entity.Order" />
+		<mapping class="com.entity.OrderDetail" />
+		
+		
+	
+	</session-factory>
+</hibernate-configuration>
