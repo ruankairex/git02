@@ -15,7 +15,7 @@ import jakarta.servlet.annotation.WebFilter;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 
-@WebFilter(urlPatterns = "/UserSystemMainPage.jsp" , filterName = "C")
+@WebFilter(urlPatterns = "/UserMainPage.do" , filterName = "C")
 public class UserSystemLoginCheck implements Filter {
 
 	@Override

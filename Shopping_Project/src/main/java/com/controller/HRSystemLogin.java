@@ -72,26 +72,25 @@ public class HRSystemLogin extends HttpServlet{
 			List<User> user = userQuery.getResultList();
 			UserPass userPass = new UserPass();
 			if(!user.isEmpty()) {
-				System.out.println("非公司員工");
-				
-				for (User users : user) {
-					userPass.setUserId(users.getUserId());
-					userPass.setLastName(users.getLastName());
-					userPass.setFirstName(users.getFirstName());
-					userPass.setUserEmail(users.getUserEmail());
-					userPass.setSellerQualified(users.getSellerQualified());
-					userPass.setUserStatus(users.getUserStatus());
-					
-				    
-				    
-				    System.out.println("--------------------------");
-				    hsession.setAttribute("UsersystemPass", userPass);//傳空的物件
-					response.sendRedirect(request.getContextPath() + "/UserSystemMainPage.jsp");	
-				}
-				
-			}else {
-				out.write("登入失敗");
-				out.write("<a href='HRSystemLoginPage.html'>Go to Homepage</a> <hr>");				
+			    System.out.println("非公司員工");
+			    
+			    for (User users : user) {
+			        userPass.setUserId(users.getUserId());
+			        userPass.setLastName(users.getLastName());
+			        userPass.setFirstName(users.getFirstName());
+			        userPass.setUserEmail(users.getUserEmail());
+			        userPass.setSellerQualified(users.getSellerQualified());
+			        userPass.setUserStatus(users.getUserStatus());
+
+			        System.out.println("--------------------------");
+			    }
+			    
+			    hsession.setAttribute("UsersystemPass", userPass);//傳入 userPass 物件
+			    response.sendRedirect(request.getContextPath() + "/UserMainPage.do");
+			} else {
+			    // 其他相關的登入失敗處理
+			    out.write("登入失敗");
+			    out.write("<a href='HRSystemLoginPage.html'>Go to Homepage</a> <hr>");
 			}
 		} else {
 			System.out.println("認證成功，將打包資訊當通行證："); // 可以再修
