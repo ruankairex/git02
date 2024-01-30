@@ -18,22 +18,22 @@ import jakarta.servlet.annotation.WebFilter;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 
-@WebFilter(urlPatterns = "/HRSystemMainPage.do", filterName = "B")
-public class HRSystemLoginCheck implements Filter {
+@WebFilter(urlPatterns = "/UserUpdate.do" , filterName = "C")
+public class CSSystemLoginCheck implements Filter {
 
 	@Override
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
 			throws IOException, ServletException {
 		response.setContentType("text/html;charset=UTF-8");
 		PrintWriter out = response.getWriter();
-
+		
+		
 		HttpSession hsession = ((HttpServletRequest) request).getSession();
 		empPass pass = (empPass) hsession.getAttribute("HRsystemPass");// 取得通行證
 //		System.out.println("filter get = "+pass.getEmail());
 		String empAuth = pass.getDbAuthority();
 		if (empAuth != null) {
-			if (empAuth.equals("HR1") || empAuth.equals("HR2") || empAuth.equals("O1") || empAuth.equals("M1")
-					|| empAuth.equals("C1") || empAuth.equals("S1")) {
+			if (empAuth.equals("S1") || empAuth.equals("S2")) {
 				System.out.println("filter:認證成功");
 				chain.doFilter(request, response);
 				
@@ -43,7 +43,7 @@ public class HRSystemLoginCheck implements Filter {
 			}
 		} else {
 			System.out.println("就是一個外人");
-			out.write("請再次確認您是否入正確密碼，或是否為公司管理人員");
+			out.write("請再次確認您是否輸入正確密碼，或是否為公司管理人員");
 		}
 
 		out.close();

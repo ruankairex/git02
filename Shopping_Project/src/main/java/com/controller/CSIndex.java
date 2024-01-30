@@ -8,7 +8,10 @@ import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
+import com.entity.Employee;
 import com.entity.User;
+import com.entity.empPass;
+import com.service.EmployeeServiceImpl;
 import com.service.UserBeanService;
 import com.util.HibernateUtil;
 
@@ -42,6 +45,10 @@ public class CSIndex extends HttpServlet {
 		
 		UserBeanService uService = new UserBeanService(session);
 		List<User> userLists = uService.selectAll();
+		
+		HttpSession hsession = request.getSession();
+		empPass pass = (empPass) hsession.getAttribute("HRsystemPass");
+		request.setAttribute("loginPass", pass);
 		
 		request.setAttribute("Userslist", userLists);
 		request.getRequestDispatcher("/CSSystemMainPage.jsp").forward(request, response);
