@@ -32,6 +32,7 @@
         	}else if("主管".equals(title)) {
      	%>
             <a class="btn btn-primary" data-bs-toggle="collapse" href="#multiCollapseExample2" role="button" aria-expanded="false" aria-controls="multiCollapseExample2">已審核賣家</a>
+            <a class="btn btn-primary" role="button" href="http://localhost:8080/Shopping_Project/HRSystemMainPage.do">人事管理系統</a>
       	<% 
         	}
       	%>
