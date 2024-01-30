@@ -42,7 +42,7 @@ public class HRSaveAuth extends HttpServlet{
 		}else {
 			System.out.println("no target");
 		}
-		response.sendRedirect(request.getContextPath() + "/HRSystemMainPage.do");
+		response.sendRedirect(request.getContextPath() + "/HRUpdateEmpPage.do");
 		
 	}
 

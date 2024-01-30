@@ -85,7 +85,7 @@ tr:nth-child(1) {
 
 		<c:choose>
 			<c:when test="${dept.equals('人事部') or title.equals('主管')}">
-				<a href="HRUpdateEmpForm.jsp" class="btn btn-primary btn-sm mb-3">部門員工權限管理</a>
+				<a href="HRUpdateEmpPage.do" class="btn btn-primary btn-sm mb-3">部門員工權限管理</a>
 			</c:when>
 		</c:choose>
 		<c:choose>
