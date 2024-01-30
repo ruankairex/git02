@@ -49,10 +49,10 @@ public class HRUpdateEmpPage extends HttpServlet {
 		empPass pass = (empPass) hsession.getAttribute("HRsystemPass");
 		
 		String dept = pass.getDepartment();
-		String title = pass.getTitle();
+//		String title = pass.getTitle();
 		
 		request.setAttribute("dept", dept);
-		hsession.setAttribute("title", title);
+//		hsession.setAttribute("title", title);
 
 		EmployeeServiceImpl empService = new EmployeeServiceImpl(session);
 		List<Employee> lists = empService.selectAll();
