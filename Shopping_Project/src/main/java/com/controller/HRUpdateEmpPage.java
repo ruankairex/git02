@@ -45,6 +45,14 @@ public class HRUpdateEmpPage extends HttpServlet {
 		SessionFactory factory = HibernateUtil.getSessionFactory();
 		Session session = factory.getCurrentSession();
 	
+		HttpSession hsession = request.getSession();
+		empPass pass = (empPass) hsession.getAttribute("HRsystemPass");
+		
+		String dept = pass.getDepartment();
+		String title = pass.getTitle();
+		
+		request.setAttribute("dept", dept);
+		hsession.setAttribute("title", title);
 
 		EmployeeServiceImpl empService = new EmployeeServiceImpl(session);
 		List<Employee> lists = empService.selectAll();

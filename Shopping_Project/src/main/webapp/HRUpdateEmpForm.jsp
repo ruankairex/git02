@@ -46,9 +46,11 @@
 				<th>Action</th>
 			</tr>
 			<%
+			String dept = (String) request.getAttribute("dept");
 			List<Employee> allEmp = (List<Employee>) request.getAttribute("allEmp");
 			if (allEmp != null && !allEmp.isEmpty()) {
 				for (Employee emp : allEmp) {
+					if(dept.equals(emp.getDepartment())) {
 			%>
 			<tr>
 				<td><%=emp.getDepartment()%></td>
@@ -79,6 +81,7 @@
 					</c:choose></td>
 			</tr>
 			<%
+			}
 			}
 			} else {
 			%>
