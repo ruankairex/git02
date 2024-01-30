@@ -17,6 +17,10 @@
     <form action="PromotionFindAllServlet" method="post">
         <button type="submit">Promotion List</button>
     </form>
+    
+    <form action="<%=request.getContextPath()%>/HRSystemMainPage.do" method="post">
+        <button type="submit">HR System</button>
+    </form>
 
     <form action="<%=request.getContextPath()%>/LogoutServlet" method="post">
         <button type="submit">Logout</button>

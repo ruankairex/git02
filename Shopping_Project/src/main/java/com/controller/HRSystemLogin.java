@@ -110,8 +110,7 @@ public class HRSystemLogin extends HttpServlet{
 				String empAuth = emp.getDbAuthority();
 				
 				System.out.println("--------------------------");
-				if(empAuth.equals("HR1") || empAuth.equals("HR2") || empAuth.equals("O1") || empAuth.equals("M1")
-						|| empAuth.equals("C1") ){
+				if(empAuth.equals("HR1") || empAuth.equals("HR2") ){
 					response.sendRedirect(request.getContextPath() + "/HRSystemMainPage.do");	
 				}else if(empAuth.equals("S1") || empAuth.equals("S2")) {
 					response.sendRedirect(request.getContextPath() + "/UserUpdate.do");	
