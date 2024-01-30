@@ -94,9 +94,13 @@
                    class="btn btn-info btn-sm">
                     更新
                 </a>
+                <a href="PromotionProductServlet?promotionId=<%= promotion.getPromotionId() %>"
+   					class="btn btn-info btn-sm">
+    				活動商品
+				</a>
                 <a href="DeletePromotionServlet?id=<%= promotion.getPromotionId() %>"
                    class="btn btn-danger btn-sm"
-                   onclick="if (!(confirm('确定要删除这个促销吗？'))) return false">
+                   onclick="if (!(confirm('確定要刪除嗎？'))) return false">
                     删除
                 </a>
             </td>
