@@ -24,7 +24,14 @@ public class PromotionSaveServlet extends HttpServlet {
 	}
 
 	private void processAction(HttpServletRequest request, HttpServletResponse response) {
-		
+		String promotionName = request.getParameter("promotionName");
+        String description = request.getParameter("description");
+        int promotionRole = Integer.parseInt(request.getParameter("promotionRole"));
+        String promotionCategory = request.getParameter("promotionCategory");
+        String startDate = request.getParameter("startDate");
+        String endDate = request.getParameter("endDate");
+        
+        
 	}
 
 }

@@ -1,7 +1,18 @@
 package com.controller;
+import java.text.ParseException;
+import com.dao.PromotionDao;
+import com.daoImpl.PromotionDaoImpl;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 
 import java.io.IOException;
-import java.io.PrintWriter;
+import com.entity.Promotion;
+import com.util.HibernateUtil;
+
+import java.sql.Timestamp;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -15,43 +26,58 @@ public class ProcessPromotionServlet extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		processAction(request,response);
+		try {
+			processAction(request,response);
+		} catch (IOException | ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		processAction(request,response);
+		try {
+			processAction(request,response);
+		} catch (IOException | ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
-	private void processAction(HttpServletRequest request, HttpServletResponse response) throws IOException {
-		response.setContentType("text/html;charset=UTF-8");
-
-        // 获取表单数据
+	private void processAction(HttpServletRequest request, HttpServletResponse response) throws IOException, ParseException {
+		
+		
+		
+		String promotionId = request.getParameter("promotionId");
         String promotionName = request.getParameter("promotionName");
         String description = request.getParameter("description");
         int promotionRole = Integer.parseInt(request.getParameter("promotionRole"));
-        String promotionCategory = request.getParameter("promotionCategory");
-        String startDate = request.getParameter("startDate");
-        String endDate = request.getParameter("endDate");
+        String promotionCategory = request.getParameter("promotionPCategory");
+        
+        
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm");
+        String startDateStr = request.getParameter("startDate");
+        String endDateStr = request.getParameter("endDate");
+        LocalDateTime startDateTime = LocalDateTime.parse(startDateStr, formatter);
+        LocalDateTime endDateTime = LocalDateTime.parse(endDateStr, formatter);
+        Timestamp startTimestamp = Timestamp.valueOf(startDateTime);
+        Timestamp endTimestamp = Timestamp.valueOf(endDateTime);
 
-        // 在实际应用中，这里应该执行与数据库交互的逻辑，将数据插入到数据库中
-
-        // 输出响应
-        PrintWriter out = response.getWriter();
-        out.println("<html>");
-        out.println("<head>");
-        out.println("<title>Process Promotion</title>");
-        out.println("</head>");
-        out.println("<body>");
-        out.println("<h2>Process Promotion</h2>");
-        out.println("<p>Promotion Name: " + promotionName + "</p>");
-        out.println("<p>Description: " + description + "</p>");
-        out.println("<p>Promotion Role: " + promotionRole + "</p>");
-        out.println("<p>Promotion Category: " + promotionCategory + "</p>");
-        out.println("<p>Start Date: " + startDate + "</p>");
-        out.println("<p>End Date: " + endDate + "</p>");
-        out.println("</body>");
-        out.println("</html>");
+        Promotion thePormotion = new Promotion();
+        thePormotion.setPromotionName(promotionName);
+        thePormotion.setDescription(description);
+        thePormotion.setPromotionRole(promotionRole);
+        thePormotion.setPromotionPCategory(Integer.parseInt(promotionCategory));
+        thePormotion.setStartDate(startTimestamp);
+        thePormotion.setEndDate(endTimestamp);
+        System.out.println(thePormotion.toString());
+        
+        SessionFactory factory = HibernateUtil.getSessionFactory();
+		Session session = factory.getCurrentSession();
+        PromotionDao thePromotionDao = new PromotionDaoImpl(session);
+        
+        
+        
 		
 	}
 
