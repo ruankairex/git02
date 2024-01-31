@@ -17,7 +17,7 @@ import jakarta.servlet.http.HttpSession;
 
 @WebFilter(urlPatterns = "/UserMainPage.do" , filterName = "C")
 public class UserSystemLoginCheck implements Filter {
-
+// 還沒用到
 	@Override
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
 			throws IOException, ServletException {
