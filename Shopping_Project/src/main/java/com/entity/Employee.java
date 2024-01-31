@@ -1,6 +1,7 @@
 package com.entity;
 
-import java.sql.Timestamp;
+import java.sql.Date;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -33,10 +34,10 @@ public class Employee {
     private String phone;
 
     @Column(name = "hire_date")
-    private Timestamp hireDate;
+    private Date hireDate;
 
     @Column(name = "birth_date")
-    private Timestamp birthDate;
+    private Date birthDate;
 
     @Column(name = "city", length = 10)
     private String city;
@@ -60,8 +61,8 @@ public class Employee {
     	
     }
     
-	public Employee(String firstName, String lastName, String email, String password, String phone, Timestamp hireDate,
-			Timestamp birthDate, String city, String district, String address, String department, String title,
+	public Employee(String firstName, String lastName, String email, String password, String phone, Date hireDate,
+			Date birthDate, String city, String district, String address, String department, String title,
 			String dbAuthority) {
 		super();
 		this.firstName = firstName;
@@ -127,19 +128,19 @@ public class Employee {
 		this.phone = phone;
 	}
 
-	public Timestamp getHireDate() {
+	public Date getHireDate() {
 		return hireDate;
 	}
 
-	public void setHireDate(Timestamp hireDate) {
+	public void setHireDate(Date hireDate) {
 		this.hireDate = hireDate;
 	}
 
-	public Timestamp getBirthDate() {
+	public Date getBirthDate() {
 		return birthDate;
 	}
 
-	public void setBirthDate(Timestamp birthDate) {
+	public void setBirthDate(Date birthDate) {
 		this.birthDate = birthDate;
 	}
 

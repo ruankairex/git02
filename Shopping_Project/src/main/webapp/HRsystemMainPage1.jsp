@@ -1,7 +1,9 @@
+<%@page import="java.text.SimpleDateFormat"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
 <%@ page import="java.util.*"%>
+<%@ page import="java.sql.Date"%>
 <%@ page import="com.dao.*"%>
 <%@ page import="com.entity.*"%>
 
@@ -65,13 +67,13 @@ tr:nth-child(1) {
 	<h2>xx公司 人事管理系統</h2>
 	<hr>
 
-	<div>
-		<c:set var="hrSystemPass" value="${sessionScope.HRsystemPass}" />
+
+	<c:set var="hrSystemPass" value="${sessionScope.HRsystemPass}" />
+	<div class="d-grid gap-2 d-md-flex justify-content-md-end">
 		<c:out
 			value="${hrSystemPass.employeeId} ${hrSystemPass.department} ${hrSystemPass.title} ${hrSystemPass.firstName} 您好!" />
-	</div>
-	<div>
-		<a href="LogOutServlet.do" class="btn btn-primary btn-sm mb-3">
+	
+		<a href="LogOutServlet.do" class="btn btn-outline-dark">
 			LogOut </a>
 	</div>
 	<c:set var="deptAllow" value="人事部" />
@@ -80,17 +82,17 @@ tr:nth-child(1) {
 	<div>
 
 		<!-- <h3>${hrSystemPass.employeeId}&nbsp;${title}</h3>也可以這樣寫 -->
-		<hr>
+		
 		<c:set var="request" value="${dept}" />
 
 		<c:choose>
 			<c:when test="${dept.equals('人事部') or title.equals('主管')}">
-				<a href="HRUpdateEmpPage.do" class="btn btn-primary btn-sm mb-3">部門員工權限管理</a>
+				<a href="FormPage.jsp" class="btn btn-primary btn-sm mb-3">部門員工權限管理</a>
 			</c:when>
 		</c:choose>
 		<c:choose>
 			<c:when test="${dept.equals('人事部')}">
-				<a href="MemberDataCarrier" class="btn btn-primary btn-sm mb-3">新進員工資料登入</a>
+				<a href="HRCreateEmpForm.jsp" class="btn btn-primary btn-sm mb-3">新進員工資料登入</a>
 			</c:when>
 		</c:choose>
 	</div>
@@ -110,47 +112,48 @@ tr:nth-child(1) {
 				<th>入職日</th>
 				<th>Action</th>
 			</tr>
-			<%
-			List<Employee> allEmp = (List<Employee>) request.getAttribute("allEmp");
-			if (allEmp != null && !allEmp.isEmpty()) {
-				for (Employee emp : allEmp) {
-			%>
+			
+			<c:if test="${not empty allEmp}">
+    			<c:forEach var="emp" items="${allEmp}">
+			
 			<tr>
-				<td><%=emp.getDepartment()%></td>
-				<td><%=emp.getTitle()%></td>
-				<td><%=emp.getDbAuthority()%></td>
-				<td><%=emp.getEmployeeId()%></td>
-				<td><%=emp.getLastName() + " " + emp.getFirstName()%></td>
-				<td><%=emp.getEmail()%></td>
-				<td><%=emp.getPhone()%></td>
-				<td><%=emp.getBirthDate()%></td>
-				<td><%=emp.getCity() + "" + emp.getDistrict() + "" + emp.getAddress()%></td>
-				<td><%=emp.getHireDate()%></td>
+				<td>${emp.department}</td>
+				<td>${emp.title}</td>
+				<td>${emp.dbAuthority}</td>
+				<td>${emp.employeeId}</td>
+				<td>${emp.lastName} ${emp.firstName}</td>
+        		<td>${emp.email}</td>
+        		<td>${emp.phone}</td>
+				<td>${emp.birthDate}</td>
+				<td>${emp.city} ${emp.district} ${emp.address}</td>
+				<td>${emp.hireDate}</td>
 				<td><span> <c:choose>
 							<c:when test="${dept.equals('人事部') or title.equals('主管')}">
-								<a href="HRUpdateAuth.do?id=<%=emp.getEmployeeId()%>"
-									class="btn btn-info btn-sm"> Update </a>
+								<c:if test="${!hrSystemPass.employeeId.equals(emp.getEmployeeId())}">
+									<a href="HRUpdateAuth.do?id=${emp.employeeId}"
+										class="btn btn-info btn-sm"> Update </a>
+								</c:if>
 							</c:when>
 						</c:choose>
 				</span> <c:choose>
-						<c:when
-							test="${dept.equals(deptAllow)}">
-							<span> <a href="DeleteEmp.do?id=<%=emp.getEmployeeId()%>"
+						<c:when test="${dept.equals(deptAllow)}">
+						<c:if test="${!hrSystemPass.employeeId.equals(emp.getEmployeeId())}">
+							<span> <a href="DeleteEmp.do?id=${emp.employeeId}"
 								class="btn btn-danger btn-sm"
 								onclick="if (!(confirm('Are you sure to delete this employee?'))) return false">
 									Delete </a>
 							</span>
+							</c:if>
 						</c:when>
 					</c:choose></td>
 			</tr>
-			<%
-			}
-			} else {
-			%>
-			<p>No data can be shown.</p>
-			<%
-			}
-			%>
+			 	</c:forEach>
+			</c:if>
+			<c:if test="${empty allEmp}">
+				<p>No data can be shown.</p>
+			</c:if>
+		
 		</table>
+		</div>
 </body>
 </html>
