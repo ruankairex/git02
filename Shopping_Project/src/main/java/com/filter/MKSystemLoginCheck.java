@@ -14,7 +14,7 @@ import jakarta.servlet.annotation.WebFilter;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 
-//@WebFilter(urlPatterns = "/HRSystemMainPage.do", filterName = "D")
+@WebFilter(urlPatterns = {"/PromotionFindAllServlet"}, filterName = "D")
 public class MKSystemLoginCheck implements Filter{
 
 	@Override
@@ -34,7 +34,7 @@ public class MKSystemLoginCheck implements Filter{
 				
 			} else {
 				System.out.println("雖然是公司的人，但沒有權限登入");
-				out.write("很抱歉，本系統僅限公司管理人員進入");
+				out.write("很抱歉，您無權限進入本系統");
 			}
 		} else {
 			System.out.println("就是一個外人");

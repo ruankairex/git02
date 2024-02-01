@@ -52,7 +52,7 @@
 <hr>
 
 <div>
-    <a href="LogOutServlet" class="btn btn-primary btn-sm mb-3">
+    <a href="LogOutServlet.do" class="btn btn-primary btn-sm mb-3">
         返回員工頁面
     </a>
 </div>
