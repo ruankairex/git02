@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>營銷部門主選單</title>
+    <title>營銷部門選單</title>
     <style>
         body {
             font-family: '微軟正黑體', Arial, sans-serif;
