@@ -14,7 +14,7 @@ import jakarta.servlet.annotation.WebFilter;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 
-@WebFilter(urlPatterns = {"/PromotionFindAllServlet"}, filterName = "D")
+@WebFilter(urlPatterns = {"/PromotionFindAllServlet","/PromotionDeleteServlet"}, filterName = "D")
 public class MKSystemLoginCheck implements Filter{
 
 	@Override

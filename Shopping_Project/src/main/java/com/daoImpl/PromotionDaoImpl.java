@@ -52,5 +52,11 @@ public class PromotionDaoImpl implements PromotionDao{
 		return thePromotion;
 	}
 
+	@Override
+	public void deletePromotionById(Integer theId) {
+		Promotion thePromotion = session.get(Promotion.class, theId);
+		session.remove(thePromotion);
+	}
+
 }
 

@@ -9,5 +9,6 @@ public interface PromotionDao {
 	public Promotion findPromotionById(int theId);
 	public List<Promotion> findAll();
 	public Promotion updatePromotion(Promotion thePromotion);
+	public void deletePromotionById(Integer theId);
 
 }

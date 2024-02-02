@@ -99,7 +99,7 @@
     				活動商品
 				</a>
                 <c:if test="${sessionScope.HRsystemPass.title == '主管'}">
-    				<a href="DeletePromotionServlet?id=<%= promotion.getPromotionId() %>"
+    				<a href="PromotionDeleteServlet?id=<%= promotion.getPromotionId() %>"
        				class="btn btn-danger btn-sm"
        				onclick="if (!(confirm('確定要刪除嗎？'))) return false">
         			删除
