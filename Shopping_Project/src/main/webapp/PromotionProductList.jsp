@@ -50,6 +50,7 @@
 <body>
 
     <h2>促銷商品列表</h2>
+    
 
     <c:if test="${not empty Products}">
         <table border="1">
@@ -60,6 +61,7 @@
                     <th>賣家編號</th>
                     <th>員工編號</th>
                     <th>單價</th>
+                    <th>審核</th>
                     <!-- 根據需要添加其他欄位 -->
                 </tr>
             </thead>
@@ -71,6 +73,7 @@
                         <td>${product.sellerId}</td>
                         <td>${product.employeeId}</td>
                         <td>${product.unitPrice}</td>
+                        <td><a href="PromotionProductDeleteServlet?id=${product.productId}&promotionId=${promotionId}">刪除商品</a></td>
                         <!-- 根據需要添加其他儲存格 -->
                     </tr>
                 </c:forEach>

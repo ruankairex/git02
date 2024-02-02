@@ -36,6 +36,7 @@ public class PromotionProductServlet extends HttpServlet {
 		List<Product> products = thePromotion.getProducts();
 		
 		request.setAttribute("Products", products);
+		request.setAttribute("promotionId", promotionId);
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/PromotionProductList.jsp");
 	    dispatcher.forward(request, response);

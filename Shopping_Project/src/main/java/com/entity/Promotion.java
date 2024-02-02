@@ -136,6 +136,15 @@ public class Promotion {
 		}
 		products.add(theProduct);
 	}
+	
+	 public boolean removeProduct(Product product) {
+	        if (products != null) {
+	            products.remove(product);
+	            product.getPromotions().remove(this);
+	            return true;
+	        }
+	        return false;
+	    }
 
 	@Override
 	public String toString() {
