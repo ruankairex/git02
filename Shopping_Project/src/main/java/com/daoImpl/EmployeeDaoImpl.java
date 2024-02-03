@@ -142,6 +142,12 @@ public class EmployeeDaoImpl implements EmployeeDao {
 		}
 		return false;
 	}
+	
+	 @Override  //統計員工數量
+	    public long countEmployeeIds() {
+		 Query<Number> query = session.createQuery("SELECT COUNT(e.employeeId) FROM Employee e", Number.class);
+	        return query.uniqueResult().intValue();
+	    }
 
 
 }

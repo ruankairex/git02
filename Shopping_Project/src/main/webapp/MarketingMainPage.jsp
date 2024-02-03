@@ -54,7 +54,11 @@
     <form action="<%=request.getContextPath()%>/HRSystemMainPage.do" method="post">
         <button type="submit">人力資源系統</button>
     </form>
-
+	
+	<form action="<%=request.getContextPath()%>/DataAnalysis" method="post">
+        <button type="submit">數據呈現</button>
+    </form>
+    
     <form action="<%=request.getContextPath()%>/LogOutServlet.do" method="get">
         <button type="submit">登出</button>
     </form>
