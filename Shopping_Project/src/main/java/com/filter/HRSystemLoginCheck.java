@@ -18,7 +18,7 @@ import jakarta.servlet.annotation.WebFilter;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 
-@WebFilter(urlPatterns = "/HRSystemMainPage.do", filterName = "B")
+@WebFilter(urlPatterns = {"/HRSystemMainPage.do","/DeleteEmp.do","/HRSaveAuth.do","/HRUpdateAuth.do","/HRUpdateEmpPage.do","/HRUpdatePwdPage.do"}, filterName = "B")
 public class HRSystemLoginCheck implements Filter {
 
 	@Override
