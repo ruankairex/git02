@@ -65,5 +65,15 @@ public class ProductDaoImpl implements ProductDao {
 		// 返回更新後的 ProductBean 對象（可能為空，視更新結果而定）
 		return result;
 	}
+	
+	@Override   //把商品資料表的unitPrice*stock，然後可以選擇類別回傳categoryId
+	public List<Integer> selectUnitpriceStockBycategory(int categoryId) {
+	    Query<Integer> query = session.createQuery( "SELECT p.unitPrice * p.stock " +
+                "FROM Product p " +
+                "WHERE p.categoryId = :categoryId", Integer.class);
+	    query.setParameter("categoryId", categoryId);
+	    List<Integer> UnitpriceStockBycategory = query.list();
+	    return UnitpriceStockBycategory;
+	}
 
 }

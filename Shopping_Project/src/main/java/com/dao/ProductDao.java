@@ -12,4 +12,5 @@ public interface ProductDao {
 	public Product update(int id,String name,Integer sid,Integer eid,Integer unitPrice,Integer categoryId,
 			Integer stock,Integer reservedQuantity,Timestamp listingDate,Timestamp modifiedDate,
 			String description,String productStatus);
+	public List<Integer> selectUnitpriceStockBycategory(int categoryId);
 }

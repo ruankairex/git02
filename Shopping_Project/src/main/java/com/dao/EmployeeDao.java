@@ -44,7 +44,7 @@ public interface EmployeeDao {
 	//D
 	public boolean delete(int employeeId);
 
-	
+	public long countEmployeeIds();
 	
 	
 }
