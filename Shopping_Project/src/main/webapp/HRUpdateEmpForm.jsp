@@ -46,7 +46,7 @@
 				<th>入職日</th>
 				<th>Action</th>
 			</tr>
-		<c:if test="${not empty allEmp and title.equals('主管')}">
+		<c:if test="${not empty allEmp and title.equals('主管')or dept.equals('人事部')}">
     			<c:forEach var="emp" items="${allEmp}">
     			<c:if test="${emp.department.equals(hrSystemPass.department)}">
 			<tr>
