@@ -10,14 +10,6 @@
 <%@ page import="com.daoImpl.UserDaoImpl" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
-<%
-	SessionFactory factry = HibernateUtil.getSessionFactory();
-	Session se = factry.getCurrentSession();
-    UserBeanService userService = new UserBeanService(se);
-    List<User> userList = userService.selectAll();
-    request.setAttribute("userList", userList);
-%>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -59,10 +51,10 @@
 </style>
 </head>
 <body>
+<h1>會員資料</h1>
 <div class="scrollable-table-container">
 	<div class="horizontal-scroll-bar"></div>
 	<div class="table-container">
-		<c:if test="${not empty userList}">
 	    <table class="draggable-table">
 	    	<tr class="">
 	        	<th>會員號碼</th>
@@ -87,7 +79,7 @@
 	            <th>會員帳號狀態</th>
 	            <th>優惠券</th>
 	        </tr>
-	        <c:forEach var="ub" items="${userList}">
+	        <c:forEach var="ub" items="${Userlist}">
 	            <tr>
 	           		<td>${ub.userId}</td>
 					<td>${ub.lastName}</td>
@@ -113,7 +105,6 @@
 	            </tr>
 	         </c:forEach>
 	    </table>
-		</c:if>
 	</div>
 </div>	
 </body>

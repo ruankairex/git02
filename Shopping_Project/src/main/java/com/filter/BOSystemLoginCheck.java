@@ -14,7 +14,7 @@ import jakarta.servlet.annotation.WebFilter;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 
-@WebFilter(urlPatterns = {"/BOsystemMainPage.do"}, filterName = "O")
+@WebFilter(urlPatterns = {"/BOSystemMainPage.do","/UserInformation.do","/ProductInformation.do"}, filterName = "BO")
 public class BOSystemLoginCheck implements Filter{
 
 	@Override
