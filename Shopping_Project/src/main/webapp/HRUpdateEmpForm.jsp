@@ -21,10 +21,10 @@
 
 </head>
 <body>
-
+<a href="HRSystemMainPage.do" class="btn btn-outline-secondary">返回主頁</a>
+<c:set var="hrSystemPass" value="${sessionScope.HRsystemPass}" />
 <div>
 
-		<!-- <h3>${hrSystemPass.employeeId}&nbsp;${title}</h3>也可以這樣寫 -->
 		<hr>
 		<c:set var="request" value="${dept}" />
 
@@ -46,50 +46,45 @@
 				<th>入職日</th>
 				<th>Action</th>
 			</tr>
-			<%
-			String dept = (String) request.getAttribute("dept");
-			List<Employee> allEmp = (List<Employee>) request.getAttribute("allEmp");
-			if (allEmp != null && !allEmp.isEmpty()) {
-				for (Employee emp : allEmp) {
-					if(dept.equals(emp.getDepartment())) {
-			%>
+		<c:if test="${not empty allEmp and dept.equals('人事部')}">
+    			<c:forEach var="emp" items="${allEmp}">
 			<tr>
-				<td><%=emp.getDepartment()%></td>
-				<td><%=emp.getTitle()%></td>
-				<td><%=emp.getDbAuthority()%></td>
-				<td><%=emp.getEmployeeId()%></td>
-				<td><%=emp.getLastName() + " " + emp.getFirstName()%></td>
-				<td><%=emp.getEmail()%></td>
-				<td><%=emp.getPhone()%></td>
-				<td><%=emp.getBirthDate()%></td>
-				<td><%=emp.getCity() + "" + emp.getDistrict() + "" + emp.getAddress()%></td>
-				<td><%=emp.getHireDate()%></td>
+				<td>${emp.department}</td>
+				<td>${emp.title}</td>
+				<td>${emp.dbAuthority}</td>
+				<td>${emp.employeeId}</td>
+				<td>${emp.lastName} ${emp.firstName}</td>
+        		<td>${emp.email}</td>
+        		<td>${emp.phone}</td>
+				<td>${emp.birthDate}</td>
+				<td>${emp.city} ${emp.district} ${emp.address}</td>
+				<td>${emp.hireDate}</td>
 				<td><span> <c:choose>
 							<c:when test="${dept.equals('人事部') or title.equals('主管')}">
-								<a href="HRUpdateAuth.do?id=<%=emp.getEmployeeId()%>"
+								<c:if test="${ !title.equals('員工')and !hrSystemPass.employeeId.equals(emp.employeeId)}">
+									<a href="HRUpdateAuth.do?id=${emp.employeeId}"
 									class="btn btn-info btn-sm"> Update </a>
+								</c:if>
 							</c:when>
 						</c:choose>
 				</span> <c:choose>
 						<c:when
-							test="${dept.equals(deptAllow)}">
-							<span> <a href="DeleteEmp.do?id=<%=emp.getEmployeeId()%>"
+							test="${dept.equals('人事部')}">
+							<c:if test="${ !title.equals('員工')and !hrSystemPass.employeeId.equals(emp.employeeId)}">
+							<span> <a href="DeleteEmp.do?id=${emp.employeeId}"
 								class="btn btn-danger btn-sm"
 								onclick="if (!(confirm('Are you sure to delete this employee?'))) return false">
 									Delete </a>
 							</span>
+							</c:if>
 						</c:when>
 					</c:choose></td>
 			</tr>
-			<%
-			}
-			}
-			} else {
-			%>
-			<p>No data can be shown.</p>
-			<%
-			}
-			%>
+			</c:forEach>
+			</c:if>
+			<c:if test="${empty allEmp}">
+				<p>No data can be shown.</p>
+			</c:if>
 		</table>
 	
 </body>
