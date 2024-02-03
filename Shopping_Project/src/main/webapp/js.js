@@ -10,7 +10,7 @@ let percent = 0;
 
 function init() {
   console.log(percent);
-  percent++
+  percent+=4
   // 更新畫面
   // 不使用 ES6 字串模板寫法
   // $text.textContent = '網頁載入進度：' + p dercent + '%'
@@ -22,9 +22,9 @@ function init() {
   if (percent === 100) {
     clearInterval(loadingTimer)
     $loading.classList.add('has-loaded');
-    setTimeout(function() {
-      document.querySelector('h1').textContent = 'Hello World!!!'
-    }, 1200)
+   // setTimeout(function() {
+    //  document.querySelector('h1').textContent = 'Hello World!!!'
+   // }, 1200)
   }
 };
 // init 不給括號，因為 setInterval 會幫他執行

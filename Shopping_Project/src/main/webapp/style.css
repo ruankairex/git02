@@ -1,13 +1,15 @@
 @charset "UTF-8";
-body {
-  justify-content: center;
-  margin: 0;
-  background-color: #9b9b9b;
-  font-family: "微軟正黑體", sans-serif;
+html {
+	height:100%;
 }
-
-h1 {
-  font-size: 180px;
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  background-color: rgb(208, 210, 217);
+  font-family: "微軟正黑體", sans-serif;
+  height:100%;
 }
 
 .c-loading {
@@ -20,7 +22,7 @@ h1 {
   height: 100vh;
   left: 0;
   top: 0;
-  background-color: #ba6196;
+  background-color: #8274af;
   opacity: 1;
   transition: opacity 0.5s 0.3s;
 }
@@ -85,7 +87,29 @@ h1 {
   width: 0;
   height: 100%;
   border-radius: 12px;
-  background-color: #8c3f6d;
+  background-color: #8d73dd;
   -webkit-animation: loading 0.5s both alternate infinite;
           animation: loading 0.5s both alternate infinite;
+}
+
+.opacity {
+	color: #5b479b;
+}
+
+input {
+	padding: 0.5rem;
+}
+
+button {
+	border: none;
+	background-color: #c3b6ef;
+	padding:0.5rem 1rem;
+	margin-left: 1rem; 
+	border-radius: 10px;
+	transition:0.5s;
+}
+
+button:hover {
+	background-color: #5b479b;
+	color: white;
 }
