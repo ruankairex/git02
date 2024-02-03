@@ -28,7 +28,7 @@
 				<input type="hidden" value="${requestScope.updateEmp.dbAuthority}" name="dbAuthorityOriginal"
 				readonly="readonly" />
 			<div>
-				<h6>3最低權限;2員工權限;1主管/最高權限</h6>
+				<h6>2員工權限;1主管/最高權限</h6>
 				<input type="text" value="" name="dbAuthority" id="dbAuthority"
 					class="form-control mb-4 w-25" placeholder="請給予權限值"
 					onblur="validateAuth()" required> <span id="AuthValidation"
@@ -49,13 +49,13 @@
 			var authWarn = document.getElementById('AuthValidation');
 			var submitButton = document.getElementById('button');
 			// 檢查是否只包含1到2之間的數字
-			var regex = /^[1-3]$/;
+			var regex = /^[1-2]$/;
 
 			if (regex.test(inputValue)) {
 				authWarn.innerHTML = ('正確');
 				submitButton.disabled = false; // 啟用按鈕
 			} else {
-				authWarn.innerHTML = ('輸入錯誤，權限範圍僅1-3');
+				authWarn.innerHTML = ('輸入錯誤，權限範圍僅1-2');
 				submitButton.disabled = true; // 禁用按鈕
 			}
 		}

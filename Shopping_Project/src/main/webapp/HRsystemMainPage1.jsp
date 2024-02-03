@@ -91,13 +91,33 @@ tr:nth-child(1) {
 			</c:when>
 		</c:choose>
 		<c:choose>
+			<c:when test="${dept.equals('營業部')}">
+				<a href="xxx" class="btn btn-primary btn-sm mb-3">營業部部門系統</a>
+			</c:when>
+				<c:when test="${dept.equals('客服部')}">
+				<a href="CSSystemMainPage.jsp" class="btn btn-primary btn-sm mb-3">客服部部門系統</a>
+				</c:when>
+					<c:when test="${dept.equals('貨運部')}">
+					<a href="xxx" class="btn btn-primary btn-sm mb-3">貨運部部門系統</a>
+					</c:when>
+					<c:when test="${dept.equals('營銷部')}">
+					<a href="MarketingMainPage.jsp" class="btn btn-primary btn-sm mb-3">營銷部部門系統</a>
+					</c:when>
+		</c:choose>
+		<c:choose>
 			<c:when test="${dept.equals('人事部')}">
-				<a href="HRCreateEmpForm.jsp" class="btn btn-primary btn-sm mb-3">新進員工資料登入</a>
+				<a href="HRCreateEmpForm.jsp" class="btn btn-secondary btn-sm mb-3">新進員工資料登入</a>
+			</c:when>
+		</c:choose>
+		<c:choose>
+			<c:when test="${dept.equals('人事部')}">
+				<a href="HRUpdatePwdForm.jsp?id=${hrSystemPass.employeeId}" class="btn btn-success btn-sm mb-3">個人密碼管理</a>
 			</c:when>
 		</c:choose>
 	</div>
 	<div></div>
 	<div>
+		<c:if test="${dept.equals('人事部')}">
 		<table class="table table-bordered table-striped">
 			<tr>
 				<th>部門</th>
@@ -112,8 +132,8 @@ tr:nth-child(1) {
 				<th>入職日</th>
 				<th>Action</th>
 			</tr>
-			
-			<c:if test="${not empty allEmp}">
+		</c:if>
+			<c:if test="${not empty allEmp and dept.equals('人事部')}">
     			<c:forEach var="emp" items="${allEmp}">
 			
 			<tr>
