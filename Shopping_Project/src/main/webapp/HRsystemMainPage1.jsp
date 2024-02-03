@@ -149,20 +149,22 @@ tr:nth-child(1) {
 				<td>${emp.hireDate}</td>
 				<td><span> <c:choose>
 							<c:when test="${dept.equals('人事部') or title.equals('主管')}">
-								<c:if test="${!hrSystemPass.employeeId.equals(emp.getEmployeeId())}">
-									<a href="HRUpdateAuth.do?id=${emp.employeeId}"
+								<c:if test="${!hrSystemPass.employeeId.equals(emp.getEmployeeId()) }">
+									<c:if test="${!emp.department.equals('人事部')}">
+										<a href="HRUpdateAuth.do?id=${emp.employeeId}"
 										class="btn btn-info btn-sm"> Update </a>
+									</c:if>
 								</c:if>
 							</c:when>
 						</c:choose>
 				</span> <c:choose>
 						<c:when test="${dept.equals(deptAllow)}">
-						<c:if test="${!hrSystemPass.employeeId.equals(emp.getEmployeeId())}">
-							<span> <a href="DeleteEmp.do?id=${emp.employeeId}"
-								class="btn btn-danger btn-sm"
-								onclick="if (!(confirm('Are you sure to delete this employee?'))) return false">
-									Delete </a>
-							</span>
+							<c:if test="${!hrSystemPass.employeeId.equals(emp.getEmployeeId())}">
+								<c:if test="${!emp.department.equals('人事部')}">
+									<span> <a href="DeleteEmp.do?id=${emp.employeeId}" class="btn btn-danger btn-sm"
+								onclick="if (!(confirm('Are you sure to delete this employee?'))) return false"> Delete </a>
+									</span>
+								</c:if>
 							</c:if>
 						</c:when>
 					</c:choose></td>
