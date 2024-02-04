@@ -13,7 +13,7 @@
         <thead>
             <tr>
                 <th>通知 ID</th>
-                <th>發布員工 ID</th>
+                <th>接收使用者 ID</th>
                 <th>推播標題</th>
                 <th>推播內容</th>
                 <th>通知推播時間</th>
