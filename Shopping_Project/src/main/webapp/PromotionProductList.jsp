@@ -58,6 +58,7 @@
                 <tr>
                     <th>商品編號</th>
                     <th>商品名稱</th>
+                    <th>商品種類</th>
                     <th>賣家編號</th>
                     <th>員工編號</th>
                     <th>單價</th>
@@ -70,10 +71,11 @@
                     <tr>
                         <td>${product.productId}</td>
                         <td>${product.productName}</td>
+                        <td>${product.categoryId}</td>
                         <td>${product.sellerId}</td>
                         <td>${product.employeeId}</td>
                         <td>${product.unitPrice}</td>
-                        <td><a href="PromotionProductDeleteServlet?id=${product.productId}&promotionId=${promotionId}">刪除商品</a></td>
+                        <td><a href="PromotionProductDeleteServlet?id=${product.productId}&promotionId=${promotionId}">移除商品資格</a></td>
                         <!-- 根據需要添加其他儲存格 -->
                     </tr>
                 </c:forEach>
@@ -84,6 +86,7 @@
     <c:if test="${empty Products}">
         <p>此促銷活動無相關商品。</p>
     </c:if>
+    <a href="PromotionFindAllServlet">回活動主頁</a>
 
 </body>
 

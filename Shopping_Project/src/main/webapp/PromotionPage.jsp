@@ -52,8 +52,8 @@
 <hr>
 
 <div>
-    <a href="LogOutServlet.do" class="btn btn-primary btn-sm mb-3">
-        返回員工頁面
+    <a href="MarketingMainPage.jsp" class="btn btn-primary btn-sm mb-3">
+        返回營銷部主頁
     </a>
 </div>
 <div>
