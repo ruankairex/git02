@@ -2,7 +2,6 @@ package com.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -19,35 +18,39 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
-@WebServlet("/ProductInformation.do")
+@WebServlet( urlPatterns = { "/ProductVerify.do" }, name = "UpdateProductServlet")
 public class ProductVerifyServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		processAction(request,response);
-	}
-
+	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		processAction(request,response);
-	}
-
-	private void processAction(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-		response.setContentType("text/html;charset=UTF-8");
-		PrintWriter out = response.getWriter();
+		response.setContentType("text/html");
+        PrintWriter out = response.getWriter();
 		
 		SessionFactory factry = HibernateUtil.getSessionFactory();
 		Session session = factry.getCurrentSession();
 		
-		ProductBeanService pdService = new ProductBeanService(session);
-		List<Product> productLists = pdService.selectAll();
+		HttpSession hsession = request.getSession();
+		empPass pass = (empPass) hsession.getAttribute("HRsystemPass");
 		
-//		HttpSession hsession = request.getSession();
-//		empPass pass = (empPass) hsession.getAttribute("HRsystemPass");
-//		request.setAttribute("loginPass", pass);
+		int eId = pass.getEmployeeId();
 		
-		request.setAttribute("Productlist", productLists);
-		request.getRequestDispatcher("/ProductInformation.jsp").forward(request, response);
+		ProductBeanService pbService = new ProductBeanService(session);
 		
+		int pId = Integer.parseInt(request.getParameter("pId"));
+		String status = request.getParameter("verification");
+		
+		Product pd = pbService.selectById(pId);
+		
+		Product productUpdate = pbService.update(pId, pd.getProductName(), pd.getSellerId(), eId, pd.getUnitPrice(), pd.getCategoryId(),
+												pd.getStock(), pd.getReservedQuantity(), pd.getListingDate(), pd.getModifiedDate(),
+												pd.getDescription(), status);
+		if(productUpdate!=null) {
+			response.sendRedirect("ProductInformation.jsp");
+		}else {
+			out.println("updatedUser == null");
+		}
 		out.close();
 	}
+	
 }

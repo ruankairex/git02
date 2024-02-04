@@ -68,7 +68,14 @@
 					       			<td>${product.listingDate}</td>
 					       			<td>${product.modifiedDate}</td>
 					       			<td>${product.description}</td>
-					       			<td>${product.productStatus}</td>
+					       			<td>
+					       				<form action="ProductVerify.do" method="post">
+					       					<select name="verification">
+					       						<option value="未審核" selected>未審核</option>
+					       						<option value="已審核">已審核</option>
+					       					</select>
+					       				</form>
+					       			</td>
 					            </tr>
 					        </c:if>
 					        </c:forEach>
@@ -115,7 +122,15 @@
 					       			<td>${product.listingDate}</td>
 					       			<td>${product.modifiedDate}</td>
 					       			<td>${product.description}</td>
-					       			<td>${product.productStatus}</td>
+					       			<td>
+					       				<form action="ProductVerify.do" method="post">
+					       					<input type="hidden" name="pId" value="${product.productId}">
+					       					<select name="verification">
+					       						<option value="已審核" selected>已審核</option>
+					       						<option value="已退回">已退回</option>
+					       					</select>
+					       				</form>
+					       			</td>
 					            </tr>
 					        </c:if>
 					        </c:forEach>
