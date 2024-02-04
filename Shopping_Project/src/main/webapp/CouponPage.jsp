@@ -42,7 +42,11 @@
         </table>
     </c:if>
 
-    <a href="<%=request.getContextPath()%>/SomeOtherPage.jsp">返回</a>
+    <div>
+    <a href="MarketingMainPage.jsp" class="btn btn-primary btn-sm mb-3">
+        返回營銷部主頁
+    </a>
+</div>
 
 </body>
 </html>
