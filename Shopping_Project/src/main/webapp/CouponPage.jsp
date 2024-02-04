@@ -19,8 +19,7 @@
                 <tr>
                     <th>優惠券代號</th>
                     <th>優惠券類別</th>
-                    <th>領券的使用者</th>
-                    <!-- 其他优惠券属性 -->
+                    <th>領券的使用者數量</th>
                 </tr>
             </thead>
             <tbody>
@@ -35,7 +34,6 @@
 <%--                             </c:forEach> --%>
 							<c:out value="${fn:length(coupon.users)}" />
                         </td>
-                        <!-- 其他优惠券属性 -->
                     </tr>
                 </c:forEach>
             </tbody>

@@ -22,6 +22,7 @@
 		<mapping class="com.entity.CouponUserMap" />
 		<mapping class="com.entity.Order" />
 		<mapping class="com.entity.OrderDetail" />
+		<mapping class="com.entity.PushNotification" />
 		
 		
 	

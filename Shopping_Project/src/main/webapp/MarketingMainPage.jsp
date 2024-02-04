@@ -59,6 +59,10 @@
         <button type="submit">數據呈現</button>
     </form>
     
+    <form action="<%=request.getContextPath()%>/NotificationFindAll" method="get">
+        <button type="submit">訊息推播</button>
+    </form>
+    
     <form action="<%=request.getContextPath()%>/LogOutServlet.do" method="get">
         <button type="submit">登出</button>
     </form>
