@@ -43,7 +43,7 @@
 
     <h2>選單</h2>
 
-    <form action="<%=request.getContextPath()%>/CouponFindAllServlet" method="post">
+    <form action="<%=request.getContextPath()%>/CouponFindAllServlet" method="get">
         <button type="submit">優惠券列表</button>
     </form>
 

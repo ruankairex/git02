@@ -1,6 +1,9 @@
 package com.daoImpl;
 
+import java.util.List;
+
 import org.hibernate.Session;
+import org.hibernate.query.Query;
 
 import com.dao.CouponDao;
 import com.entity.Coupon;
@@ -33,6 +36,13 @@ public class CouponDaoImpl implements CouponDao {
 		Coupon theCoupon = session.get(Coupon.class, theId);
 		
 		return theCoupon;
+	}
+
+	@Override
+	public List<Coupon> findAllCoupons() {
+		Query<Coupon> query = session.createQuery("from Coupon",Coupon.class);
+		List<Coupon> lists = query.list();
+		return lists;
 	}
 
 }

@@ -52,7 +52,7 @@ public class Coupon {
     @Column(name = "end_date")
     private Timestamp endDate;
     
-    @ManyToMany(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE,
+    @ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.MERGE,
 			CascadeType.DETACH, CascadeType.REFRESH})
     @JoinTable(name="coupon_user_map", joinColumns = @JoinColumn(name="coupon_id"),
 				inverseJoinColumns = @JoinColumn(name="user_id"))
