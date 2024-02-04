@@ -23,10 +23,25 @@ import jakarta.servlet.http.HttpServletResponse;
 public class PromotionProductServlet extends HttpServlet {
  
 	private static final long serialVersionUID = 1L;
+	
+	
+
+	@Override
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		processAction(request,response);
+	}
+
+
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
    
-        String promotionId = request.getParameter("promotionId");
+		processAction(request,response);
+        
+    }
+	
+
+	private void processAction(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String promotionId = request.getParameter("promotionId");
 
         SessionFactory factory = HibernateUtil.getSessionFactory();
 		Session session = factory.getCurrentSession();
@@ -40,6 +55,8 @@ public class PromotionProductServlet extends HttpServlet {
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/PromotionProductList.jsp");
 	    dispatcher.forward(request, response);
-        
-    }
+		
+	}
+	
+	
 }

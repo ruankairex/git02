@@ -51,37 +51,42 @@
 
     <h2>促銷商品列表</h2>
     
-
-    <c:if test="${not empty Products}">
-        <table border="1">
-            <thead>
-                <tr>
-                    <th>商品編號</th>
-                    <th>商品名稱</th>
-                    <th>商品種類</th>
-                    <th>賣家編號</th>
-                    <th>員工編號</th>
-                    <th>單價</th>
-                    <th>審核</th>
-                    <!-- 根據需要添加其他欄位 -->
-                </tr>
-            </thead>
-            <tbody>
-                <c:forEach var="product" items="${Products}">
+    <form action="PromotionBatchRemoveProductsServlet" method="post">
+    <input type="hidden" name="promotionId" value="${promotionId}">
+        <c:if test="${not empty Products}">
+            <table border="1">
+                <thead>
                     <tr>
-                        <td>${product.productId}</td>
-                        <td>${product.productName}</td>
-                        <td>${product.categoryId}</td>
-                        <td>${product.sellerId}</td>
-                        <td>${product.employeeId}</td>
-                        <td>${product.unitPrice}</td>
-                        <td><a href="PromotionProductDeleteServlet?id=${product.productId}&promotionId=${promotionId}">移除商品資格</a></td>
-                        <!-- 根據需要添加其他儲存格 -->
+                        <th>選擇</th>
+                        <th>商品編號</th>
+                        <th>商品名稱</th>
+                        <th>商品種類</th>
+                        <th>賣家編號</th>
+                        <th>員工編號</th>
+                        <th>單價</th>
+                        <th>審核</th>
+                        <!-- 根據需要添加其他欄位 -->
                     </tr>
-                </c:forEach>
-            </tbody>
-        </table>
-    </c:if>
+                </thead>
+                <tbody>
+                    <c:forEach var="product" items="${Products}">
+                        <tr>
+                            <td><input type="checkbox" name="selectedProducts" value="${product.productId}"></td>
+                            <td>${product.productId}</td>
+                            <td>${product.productName}</td>
+                            <td>${product.categoryId}</td>
+                            <td>${product.sellerId}</td>
+                            <td>${product.employeeId}</td>
+                            <td>${product.unitPrice}</td>
+                            <td><a href="PromotionProductDeleteServlet?id=${product.productId}&promotionId=${promotionId}">移除商品資格</a></td>
+                            <!-- 根據需要添加其他儲存格 -->
+                        </tr>
+                    </c:forEach>
+                </tbody>
+            </table>
+            <button type="submit">批量移除選中商品資格</button>
+        </c:if>
+    </form>
 
     <c:if test="${empty Products}">
         <p>此促銷活動無相關商品。</p>
