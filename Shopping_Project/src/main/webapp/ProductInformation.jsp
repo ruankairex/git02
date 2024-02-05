@@ -28,6 +28,8 @@
             <a class="btn btn-primary" data-bs-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">未審核商品</a>
 
             <a class="btn btn-primary" data-bs-toggle="collapse" href="#multiCollapseExample2" role="button" aria-expanded="false" aria-controls="multiCollapseExample2">已審核商品</a>
+            
+            <a class="btn btn-primary" data-bs-toggle="collapse" href="#multiCollapseExample3" role="button" aria-expanded="false" aria-controls="multiCollapseExample2">已退回商品</a>
 
       	<a class="btn btn-outline-danger" role="button" href="LogOutServlet.do">LogOut</a>
     </p>
@@ -70,10 +72,12 @@
 					       			<td>${product.description}</td>
 					       			<td>
 					       				<form action="ProductVerify.do" method="post">
+					       					<input type="hidden" name="pId" value="${product.productId}">
 					       					<select name="verification">
 					       						<option value="未審核" selected>未審核</option>
 					       						<option value="已審核">已審核</option>
 					       					</select>
+					       					<button type="submit">送出</button>
 					       				</form>
 					       			</td>
 					            </tr>
@@ -129,8 +133,56 @@
 					       						<option value="已審核" selected>已審核</option>
 					       						<option value="已退回">已退回</option>
 					       					</select>
+					       					<button type="submit">送出</button>
 					       				</form>
 					       			</td>
+					            </tr>
+					        </c:if>
+					        </c:forEach>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col">
+            <div class="collapse multi-collapse" id="multiCollapseExample3">
+                <div class="card card-body">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>商品編號</th>
+					            <th>商品名稱</th>
+					            <th>賣家會員號碼</th>
+					            <th>審核員工編號</th>
+					            <th>單價</th>
+					            <th>商品種類</th>
+					            <th>庫存量</th>
+					            <th>預定商品數量</th>
+					            <th>上架日</th>
+					            <th>最後修改日期</th>
+					            <th>商品說明</th>
+					            <th>商品狀態</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <c:forEach var="product" items="${Productlist}">
+                            <c:if test="${'已退回' eq product.productStatus}">
+					            <tr>
+					           		<td>${product.productId}</td>
+									<td>${product.productName}</td>
+									<td>${product.sellerId}</td>
+					       			<td>${product.employeeId}</td>
+					       			<td>${product.unitPrice}</td>
+					       			<td>${product.categoryId}</td>
+					       			<td>${product.stock}</td>
+					       			<td>${product.reservedQuantity}</td>
+					       			<td>${product.listingDate}</td>
+					       			<td>${product.modifiedDate}</td>
+					       			<td>${product.description}</td>
+					       			<td>${product.productStatus}</td>
 					            </tr>
 					        </c:if>
 					        </c:forEach>

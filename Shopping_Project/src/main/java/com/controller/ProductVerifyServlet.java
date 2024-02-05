@@ -23,7 +23,15 @@ public class ProductVerifyServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	@Override
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		processAction(request,response);
+	}
+	@Override
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException {
+		processAction(request, response);
+	}
+
+	private void processAction(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html");
         PrintWriter out = response.getWriter();
 		
@@ -46,11 +54,12 @@ public class ProductVerifyServlet extends HttpServlet {
 												pd.getStock(), pd.getReservedQuantity(), pd.getListingDate(), pd.getModifiedDate(),
 												pd.getDescription(), status);
 		if(productUpdate!=null) {
-			response.sendRedirect("ProductInformation.jsp");
+			response.sendRedirect(request.getContextPath() + "/ProductInformation.do");
 		}else {
 			out.println("updatedUser == null");
 		}
 		out.close();
+		
 	}
 	
 }

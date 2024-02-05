@@ -46,7 +46,7 @@ public class BOMainPage extends HttpServlet {
 		Session session = factory.getCurrentSession();
 
 		HttpSession hsession = request.getSession();
-		empPass pass = (empPass) hsession.getAttribute("BOsystemPass");
+		empPass pass = (empPass) hsession.getAttribute("HRsystemPass");
 		request.setAttribute("loginPass", pass);
 		
 		String dept = pass.getDepartment();
@@ -55,7 +55,7 @@ public class BOMainPage extends HttpServlet {
 		hsession.setAttribute("dept", dept);
 		hsession.setAttribute("title", title);
 		
-		request.getRequestDispatcher("/BOsystemMainPage.jsp").forward(request, response);
+		request.getRequestDispatcher("/BosystemMainPage.jsp").forward(request, response);
 		out.close();
 
 	}

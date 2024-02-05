@@ -116,7 +116,7 @@ public class HRSystemLogin extends HttpServlet{
 				}else if(empAuth.equals("M1") || empAuth.equals("M2")) {
 					response.sendRedirect(request.getContextPath() + "/MarketingMainPage.jsp");	
 				}else if(empAuth.equals("C1") || empAuth.equals("C2")) {
-					response.sendRedirect(request.getContextPath() + "/BosystemMainPage.jsp");	
+					response.sendRedirect(request.getContextPath() + "/BOSystemMainPage.do");	
 				}
 			}
 			out.close();
